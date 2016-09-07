@@ -15,7 +15,7 @@ public class sorting {
 		String str_data = srt.readFile();	
 		String[] word = str_data.split(" ");
 		word = srt.getSort(word);
-		//srt.writeFile(word); // ERROR!
+		srt.writeFile(word); // ERROR!
 		for(int i = 0; i < word.length; i++)
 			System.out.println(word[i]);
 	}
@@ -60,13 +60,12 @@ public class sorting {
 	public void writeFile(String[] str){
 		File m_file = new File("D:\\myProject\\Sorting\\data_out.txt");
 		try {
-			FileWriter fileWriter = new FileWriter(m_file);
-			BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(m_file));
+			//BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 			for(int i = 0; i < str.length; i++){
 				bufferedWriter.write(str[i]);
 				bufferedWriter.newLine();
 			}
-			fileWriter.close();
 			bufferedWriter.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
